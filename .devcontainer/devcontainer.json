@@ -1,0 +1,59 @@
+{
+	"name": "Kotlin dev",
+	"dockerComposeFile": [
+		"../docker-compose.yml"
+	],
+	"service": "kotlin",
+	"workspaceFolder": "/kotlin",
+	"settings": {
+		"terminal.integrated.shell.linux": null,
+		"kotlin.compiler.jvm.target": "1.8",
+		"launch": {
+			"version": "2.0.0",
+			"configurations": [
+				{
+					"type": "kotlin",
+					"request": "launch",
+					"name": "Kotlin Launch",
+					"projectRoot": "${workspaceFolder}",
+					"mainClass": "ninja/plantation/api/ApiApplicationKt",
+					"preLaunchTask": "build"
+				}
+			],
+		},
+		"tasks": {
+			"version": "2.0.0",
+			"tasks": [
+				{
+					"label": "build",
+					"type": "shell",
+					"command": "./gradlew build -x test",
+					"problemMatcher": [],
+					"group": {
+						"kind": "build",
+						"isDefault": true
+					}
+				},
+				{
+					"label": "run",
+					"type": "shell",
+					"command": "./gradlew bootRun",
+					"problemMatcher": []
+				},
+				{
+					"label": "test",
+					"type": "shell",
+					"command": "./gradlew test",
+					"problemMatcher": []
+				}
+			]
+		}
+	},
+	"extensions": [
+		"vscjava.vscode-java-pack",
+		//"redhat.vscode-xml",
+		"fwcd.kotlin",
+		"vscjava.vscode-spring-initializr"
+	],
+	"remoteUser": "gradle"
+}
