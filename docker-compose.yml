@@ -1,0 +1,15 @@
+version: '3.9'
+services:
+  kotlin:
+    build:
+      context: .
+      args:
+        USER_UID: $DEV_UID
+        USER_GID: $DEV_GID
+    user: ${DEV_UID}:${DEV_GID}
+    tty: true
+    ports:
+      - 8080:8080
+    volumes:
+      - .:/kotlin
+    command: bash
