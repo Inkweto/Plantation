@@ -8,8 +8,8 @@ import javax.persistence.Id
 import javax.persistence.Table
 
 @Entity
-@Table(name = "users")
-data class Users(
+@Table
+data class User(
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,8 +19,10 @@ data class Users(
     var login: String,
 
     @Column(name = "password_hash")
+ 
     var password_hash: String
-){
-	override fun toString(): String{
-        return "Users[id=${id}, login=${login}, password_hash=${password_hash}]"
-	}
+)
+//{
+	// override fun toString(): String{
+    //     return "User[id=${id}, login=${login}, password_hash=${password_hash}]"
+	// }
