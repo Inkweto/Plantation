@@ -9,21 +9,24 @@ import javax.persistence.Table
 
 @Entity
 @Table
-data class User(
+public class User(
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Long?, 
+    var id: Long? = null, 
 
     @Column(name = "login")
-    var login: String,
+    var login: String? = null,
 
     @Column(name = "password_hash")
  
-    var password_hash: String
+    var password_hash: String? = null
+    
 )
-{
-	override fun toString(): String{
-        return "User[id=${id}, login=${login}, password_hash=${password_hash}]"
-	}
-}
+
+
+// {
+// 	override fun toString(): String{
+//         return "User[id=${id}, login=${login}, password_hash=${password_hash}]"
+// 	}
+// }

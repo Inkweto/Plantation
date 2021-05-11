@@ -7,14 +7,16 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.boot.SpringApplication
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing
+import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
+@ComponentScan("ninja.plantation.api.controller")
 @EnableJpaAuditing
 class ApiApplication {
 }
 
 fun main(args: Array<String>) {
-    runApplication<ApiApplication>(*args)
+    //runApplication<ApiApplication>(*args)
     SpringApplication.run(ApiApplication::class.java, * args)
 }
 

@@ -44,8 +44,8 @@ class UserServiceImpl: UserService {
 
     override fun updateUser(id: Long, user: User):User {
         val currentUser = repository.findById(id).orElse(null);
-         if (currentUser != null) repository.save(currentUser.copy(id,user.login,user.password_hash))
-        log.info("${user.login},updated!!!")
+       //  if (currentUser != null) repository.save(currentUser.copy(id,user.login,user.password_hash))
+        //log.info("${user.login},updated!!!")
       return currentUser
 
     }
