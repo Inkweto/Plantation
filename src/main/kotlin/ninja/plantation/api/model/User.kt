@@ -22,7 +22,8 @@ data class User(
  
     var password_hash: String
 )
-//{
-	// override fun toString(): String{
-    //     return "User[id=${id}, login=${login}, password_hash=${password_hash}]"
-	// }
+{
+	override fun toString(): String{
+        return "User[id=${id}, login=${login}, password_hash=${password_hash}]"
+	}
+}
