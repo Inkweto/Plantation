@@ -6,25 +6,25 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
-import ninja.plantation.api.model.User
-import ninja.plantation.api.repository.UserRepository
+import ninja.plantation.api.model.Plant
+import ninja.plantation.api.repository.PlantRepository
 
 @RestController
-class WebController {
+class Plantontroller {
 	
     @Autowired
-    lateinit var repository: UserRepository
+    lateinit var repository: PlantRepository
        
-    @RequestMapping("/save")
+    @RequestMapping("/saveplants")
     fun process(): String{
-        repository.save(User(1, "Jack", "pass1"))
-        repository.save(User(2, "Adam", "admin"))
-        repository.save(User(5, "Kimss", "pass2"))
+        repository.save(Plant(1, 1, "plant", 3))
+        repository.save(Plant(2, 2, "alsoplant", 3))
+        repository.save(Plant(5, 3, "alsoplantbutbigger", 3))
         return "Done"
     }
        
        
-    @RequestMapping("/findall")
+    @RequestMapping("/findallplants")
     fun findAll(): String{
         var result = ""
 		
@@ -35,16 +35,16 @@ class WebController {
         return result
     }
        
-    @RequestMapping("/findbyid")
+    @RequestMapping("/findplantbyid")
     fun findById(@RequestParam("id") id: Long): String{
         return repository.findById(id).orElse(null).toString()
     }
        
-    @RequestMapping("/findbylogin")
-    fun fetchDataBylogin(@RequestParam("login") login: String): String{
+    @RequestMapping("/findplantbyname")
+    fun fetchDataByName(@RequestParam("name") name: String): String{
         var result = ""
            
-        for(cust in repository.findByLogin(login)){
+        for(cust in repository.findByName(name)){
             result += cust.toString() + "" 
         }
            

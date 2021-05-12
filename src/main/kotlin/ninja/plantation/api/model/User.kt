@@ -13,14 +13,15 @@ public class User(
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Long? = null, 
+    @Column(name = "id", nullable = false, updatable = false)
+    var id: Long = 0, 
 
-    @Column(name = "login")
-    var login: String? = null,
+    @Column(name = "login", nullable = false, unique = true)
+    var login: String = "",
 
-    @Column(name = "password_hash")
+    @Column(name = "password_hash", nullable = false, unique = true)
  
-    var password_hash: String? = null
+    var password_hash: String = ""
     
 )
 
