@@ -17,9 +17,7 @@ class Plantontroller {
        
     @RequestMapping("/saveplants")
     fun process(): String{
-        repository.save(Plant(1, 1, "plant", 3))
-        repository.save(Plant(2, 2, "alsoplant", 3))
-        repository.save(Plant(5, 3, "alsoplantbutbigger", 3))
+        repository.save(Plant(7, 1, "plant_test", 3))
         return "Done"
     }
        

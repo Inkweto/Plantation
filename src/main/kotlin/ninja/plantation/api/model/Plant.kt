@@ -22,10 +22,10 @@ public class Plant(
     var name: String = "",
 
     @Column(name = "heigth")
-    var heigth: Long = 0,
+    var heigth: Long? = 0,
 
     @Column(name = "diameter")
-    var diameter: String? = null,
+    var diameter: Long? = 0,
 
     @Column(name = "photo_path")
     var photo_path: String? = null
