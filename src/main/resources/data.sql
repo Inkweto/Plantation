@@ -1,11 +1,11 @@
-CREATE TABLE `Users` (
+CREATE TABLE IF NOT EXISTS `Users` (
   `id` INT(11) AUTO_INCREMENT,
   `login` VARCHAR(20) NOT NULL,
   `password_hash` VARCHAR(20) NOT NULL,
   PRIMARY KEY (`id`)
 );
 
-CREATE TABLE `Plant` (
+CREATE TABLE IF NOT EXISTS`Plant` (
   `plant_id` INT(11) AUTO_INCREMENT,
   `user_owner_id` INT(11),
   `name` VARCHAR(20) NOT NULL,
@@ -17,7 +17,7 @@ CREATE TABLE `Plant` (
     REFERENCES `Users`(`id`)
 );
 
-CREATE TABLE `Notice` (
+CREATE TABLE IF NOT EXISTS `Notice` (
   `notice_id` INT(11) AUTO_INCREMENT,
   `user_id` INT(11),
   `plant_id` INT(11),
@@ -29,7 +29,7 @@ CREATE TABLE `Notice` (
     REFERENCES `Plant`(`plant_id`),
 );
 
-CREATE TABLE `TemplatePlant` (
+CREATE TABLE IF NOT EXISTS `TemplatePlant` (
   `template_plant_id` INT(11) AUTO_INCREMENT,
   `name` VARCHAR(20) NOT NULL,
   `height` INT(3),
@@ -37,4 +37,3 @@ CREATE TABLE `TemplatePlant` (
   `photo_path` VARCHAR(20),
   PRIMARY KEY (`template_plant_id`)
 );
-

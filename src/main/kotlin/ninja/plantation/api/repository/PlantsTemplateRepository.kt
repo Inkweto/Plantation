@@ -7,6 +7,5 @@ import java.lang.management.PlatformManagedObject
 
 // CRUD functions for class PlantsTemplate
 @Repository
-interface PlantsTemplateRepository: CrudRepository<PlatformManagedObject, Long> {
-    fun findByname(name: String): MutableList<PlantsTemplate>
+interface PlantsTemplateRepository: CrudRepository<PlantsTemplate, Long> {
 }
