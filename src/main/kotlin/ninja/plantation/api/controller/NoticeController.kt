@@ -6,23 +6,22 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
-import ninja.plantation.api.model.Plant
-import ninja.plantation.api.repository.PlantRepository
+import ninja.plantation.api.model.Notice
+import ninja.plantation.api.repository.NoticeRepository
 
 @RestController
-class Plantontroller {
+class NoticeController {
 	
     @Autowired
-    lateinit var repository: PlantRepository
+    lateinit var repository: NoticeRepository
        
-    @RequestMapping("/saveplants")
+    @RequestMapping("/saveNotice")
     fun process(): String{
-        repository.save(Plant(7, 1, "plant_test", 3))
         return "Done"
     }
        
        
-    @RequestMapping("/FindAllPlants")
+    @RequestMapping("/findAllNotices")
     fun findAll(): String{
         var result = ""
 		
@@ -33,19 +32,8 @@ class Plantontroller {
         return result
     }
        
-    @RequestMapping("/FindPlantById")
+    @RequestMapping("/findNoticeById")
     fun findById(@RequestParam("id") id: Long): String{
         return repository.findById(id).orElse(null).toString()
-    }
-       
-    @RequestMapping("/findPlantByName")
-    fun fetchDataByName(@RequestParam("name") name: String): String{
-        var result = ""
-           
-        for(cust in repository.findByName(name)){
-            result += cust.toString() + "" 
-        }
-           
-        return result
     }
 }

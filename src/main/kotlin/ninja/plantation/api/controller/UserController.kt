@@ -10,12 +10,12 @@ import ninja.plantation.api.model.User
 import ninja.plantation.api.repository.UserRepository
 
 @RestController
-class WebController {
+class UserController {
 	
     @Autowired
     lateinit var repository: UserRepository
        
-    @RequestMapping("/save")
+    @RequestMapping("/saveUsers")
     fun process(): String{
         repository.save(User(1, "Jack", "pass1"))
         repository.save(User(2, "Adam", "admin"))
@@ -25,7 +25,7 @@ class WebController {
     }
        
        
-    @RequestMapping("/findall")
+    @RequestMapping("/findAll")
     fun findAll(): String{
         var result = ""
 		
@@ -36,12 +36,12 @@ class WebController {
         return result
     }
        
-    @RequestMapping("/findbyid")
+    @RequestMapping("/findUserById")
     fun findById(@RequestParam("id") id: Long): String{
         return repository.findById(id).orElse(null).toString()
     }
        
-    @RequestMapping("/findbylogin")
+    @RequestMapping("/findUserByLogin")
     fun fetchDataBylogin(@RequestParam("login") login: String): String{
         var result = ""
            
