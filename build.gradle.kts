@@ -22,12 +22,22 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-data-rest")
 	implementation("org.springframework.boot:spring-boot-starter-validation")
+	implementation("org.springframework.boot:spring-boot-starter-jetty")
+	implementation("org.springframework.boot:spring-boot-starter-actuator")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	implementation ("io.github.microutils:kotlin-logging-jvm:2.0.6")
-	runtimeOnly("mysql:mysql-connector-java:8.0.17")
+	runtimeOnly("mysql:mysql-connector-java")
 	// runtimeOnly("com.h2database:h2")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	// Jackson Dependencies
+	compile("com.fasterxml.jackson.core:jackson-annotations")
+	compile("com.fasterxml.jackson.core:jackson-core")
+	compile("com.fasterxml.jackson.core:jackson-databind")
+	runtime("com.fasterxml.jackson.datatype:jackson-datatype-jdk8")
+	runtime("com.fasterxml.jackson.datatype:jackson-datatype-jsr310")
+	runtime("com.fasterxml.jackson.module:jackson-module-kotlin")
+	
 }
 
 tasks.withType<KotlinCompile> {

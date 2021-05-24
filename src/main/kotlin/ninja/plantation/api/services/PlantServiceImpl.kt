@@ -19,8 +19,10 @@ class PlantServiceImpl: PlantService {
             repository.findAll()
 
      override fun getPlantById(plant_id: Long) =
-             repository.findById(plant_id).orElse(null);
+            repository.findById(plant_id).orElse(null);
 
+    // override fun getPlantByOwnerId(user_id: Long) =
+    //         repository.findByOwnerId(user_id) 
 
     override fun getPlantByName(name: String) =
             repository.findByName(name)
@@ -42,10 +44,11 @@ class PlantServiceImpl: PlantService {
         log.info("All Plants deleted!!")
     }
 
-    override fun updatePlant(plant_id: Long, Plant: Plant):Plant {
+    override fun updatePlant(plant_id: Long, plant: Plant): Plant {
         val currentPlant = repository.findById(plant_id).orElse(null);
-       //  if (currentPlant != null) repository.save(currentPlant.copy(id,Plant.Name,Plant.password_hash))
-        //log.info("${Plant.Name},updated!!!")
+        if (currentPlant != null) 
+            repository.save(currentPlant)
+        log.info("${plant.name},updated!!!")
       return currentPlant
 
     }

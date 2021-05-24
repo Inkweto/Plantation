@@ -21,7 +21,7 @@ class PlantsTemplateController {
     }
        
        
-    @RequestMapping("/findallPlantsTemplates")
+    @RequestMapping("/findAllPlantsTemplates")
     fun findAll(): String{
         var result = ""
 		

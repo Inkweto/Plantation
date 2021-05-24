@@ -10,7 +10,7 @@ import ninja.plantation.api.model.Plant
 import ninja.plantation.api.repository.PlantRepository
 
 @RestController
-class Plantontroller {
+class PlantController {
 	
     @Autowired
     lateinit var repository: PlantRepository
