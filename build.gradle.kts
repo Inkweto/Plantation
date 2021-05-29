@@ -30,13 +30,6 @@ dependencies {
 	runtimeOnly("mysql:mysql-connector-java")
 	// runtimeOnly("com.h2database:h2")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	// Jackson Dependencies
-	compile("com.fasterxml.jackson.core:jackson-annotations")
-	compile("com.fasterxml.jackson.core:jackson-core")
-	compile("com.fasterxml.jackson.core:jackson-databind")
-	runtime("com.fasterxml.jackson.datatype:jackson-datatype-jdk8")
-	runtime("com.fasterxml.jackson.datatype:jackson-datatype-jsr310")
-	runtime("com.fasterxml.jackson.module:jackson-module-kotlin")
 	
 }
 

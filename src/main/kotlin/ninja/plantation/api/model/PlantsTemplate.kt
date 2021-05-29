@@ -8,8 +8,10 @@ import javax.persistence.Id
 import javax.persistence.Table
 
 @Entity
+
 @Table
 @org.springframework.data.relational.core.mapping.Table
+
 public class PlantsTemplate(
     
     @Id

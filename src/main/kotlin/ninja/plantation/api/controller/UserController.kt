@@ -17,10 +17,10 @@ class UserController {
        
     @RequestMapping("/saveUsers")
     fun process(): String{
-        repository.save(User(1, "Jack", "pass1"))
-        repository.save(User(2, "Adam", "admin"))
-        repository.save(User(5, "Kimss", "pass2"))
-        repository.save(User(4, "Adam1", "admi1n"))
+        // repository.save(User(1, "Jack", "pass1", 1))
+        // repository.save(User(2, "Adam", "admin"))
+        // repository.save(User(5, "Kimss", "pass2"))
+        // repository.save(User(4, "Adam1", "admi1n"))
         return "Done"
     }
        
