@@ -28,12 +28,12 @@ public class User(
     @Column(name = "password_hash", nullable = false, unique = true)
     var password_hash: String = "", 
 
-    @OneToMany(mappedBy = "user", cascade = arrayOf(CascadeType.ALL), fetch = FetchType.EAGER)
-    var plants: MutableList<Plant>?
+
+
+
+    @OneToMany(mappedBy = "user_owner_id", cascade = arrayOf(CascadeType.ALL))
+    var plants: Set<Plant>?,
     
+    @OneToMany(mappedBy = "user_id", cascade = arrayOf(CascadeType.ALL))
+    var notices: Set<Notice>?
 )
-// {
-// 	override fun toString(): String{
-//         return "User[id=${id}, login=${login}, password_hash=${password_hash}]"
-// 	}
-// }

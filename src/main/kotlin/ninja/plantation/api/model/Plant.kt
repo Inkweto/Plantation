@@ -20,8 +20,8 @@ public class Plant(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var plant_id: Long? = null, 
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    val users: User? = null,
+    @ManyToOne 
+    val user_owner_id: User? = null,
 
     @Column(name = "name")
     var name: String = "",
@@ -35,7 +35,6 @@ public class Plant(
     @Column(name = "photo_path")
     var photo_path: String? = null,
 
-    // @OneToMany(mappedBy = "plant", cascade = arrayOf(CascadeType.ALL), fetch = FetchType.EAGER)
-    // var notices: List<Notice> = emptyList()
-
+    @OneToMany(mappedBy = "plant_id", cascade = arrayOf(CascadeType.ALL))
+    var notices: Set<Notice>?
 )

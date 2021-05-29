@@ -20,18 +20,16 @@ public class Notice(
     @Column(name = "notice_id", nullable = false, updatable = false)
     var notice_id: Long = 0, 
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    val users: User? = null,
+    @ManyToOne 
+    val user_id: User? = null,
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    val plants: Plant? = null,
+    @ManyToOne
+    val plant_id: Plant? = null,
 
     @Column(name = "name")
     var name: String = "",
 
     @Column(name = "notice_text")
     var notice_text: String? = null
-
-
 
 )
