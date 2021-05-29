@@ -10,12 +10,19 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.boot.autoconfigure.domain.EntityScan
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-
-@SpringBootApplication
-@ComponentScan("ninja.plantation.api.controller")
-@EnableJpaRepositories("ninja.plantation.api.repository")
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+// @SpringBootApplication
+// @EnableJpaRepositories("ninja.plantation.api.repository")
 // @EntityScan("ninja.plantation.api.model")
-@EnableJpaAuditing
+// @ComponentScan("ninja.plantation.api.controller")
+
+@SpringBootApplication   
+// @EnableAutoConfiguration
+// @ComponentScan("ninja.plantation.api.controller")
+// @EnableJpaRepositories("ninja.plantation.api.repository")
+// @EnableTransactionManagement
+// @EntityScan("ninja.plantation.api.model")
 class ApiApplication {
 }
 

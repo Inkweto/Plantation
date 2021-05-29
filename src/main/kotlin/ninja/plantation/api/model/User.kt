@@ -6,9 +6,12 @@ import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
 import javax.persistence.Table
+import javax.persistence.JoinColumn
+import javax.persistence.CascadeType
+import javax.persistence.OneToMany
 
 @Entity
-@Table
+@Table(name = "user")
 public class User(
     
     @Id
@@ -20,12 +23,12 @@ public class User(
     var login: String = "",
 
     @Column(name = "password_hash", nullable = false, unique = true)
- 
-    var password_hash: String = ""
+    var password_hash: String = "", 
+
+    @OneToMany(mappedBy = "user", cascade = arrayOf(CascadeType.ALL), fetch = FetchType.EAGER)
+    var plants: MutableList<Plant>?
     
 )
-
-
 // {
 // 	override fun toString(): String{
 //         return "User[id=${id}, login=${login}, password_hash=${password_hash}]"

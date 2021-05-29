@@ -17,7 +17,7 @@ class PlantController {
        
     @RequestMapping("/saveplants")
     fun process(): String{
-        repository.save(Plant(7, 1, "plant_test", 3))
+        //repository.save(Plant(7, 1, "plant_test", 3))
         return "Done"
     }
        
