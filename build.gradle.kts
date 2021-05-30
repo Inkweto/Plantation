@@ -26,9 +26,10 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-	implementation ("io.github.microutils:kotlin-logging-jvm:2.0.6")
+	implementation("io.github.microutils:kotlin-logging-jvm:2.0.6")
 	runtimeOnly("mysql:mysql-connector-java")
-	// runtimeOnly("com.h2database:h2")
+	compileOnly("org.projectlombok:lombok:1.18.4")
+	annotationProcessor("org.projectlombok:lombok:1.18.4")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	
 }

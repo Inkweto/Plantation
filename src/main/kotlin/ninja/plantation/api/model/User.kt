@@ -9,9 +9,14 @@ import javax.persistence.Table
 import javax.persistence.JoinColumn
 import javax.persistence.CascadeType
 import javax.persistence.OneToMany
+import lombok.Data
+import lombok.Builder
+import lombok.NoArgsConstructor
+import lombok.AllArgsConstructor
 
+
+@Data @Builder @NoArgsConstructor @AllArgsConstructor
 @Entity
-
 @Table
 @org.springframework.data.relational.core.mapping.Table
 
@@ -32,8 +37,8 @@ public class User(
 
 
     @OneToMany(mappedBy = "user_owner_id", cascade = arrayOf(CascadeType.ALL))
-    var plants: Set<Plant>?,
+    var plants: List<Plant>? = null,
     
     @OneToMany(mappedBy = "user_id", cascade = arrayOf(CascadeType.ALL))
-    var notices: Set<Notice>?
+    var notices: List<Notice>? = null
 )

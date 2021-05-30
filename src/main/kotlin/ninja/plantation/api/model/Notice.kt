@@ -8,8 +8,10 @@ import javax.persistence.Id
 import javax.persistence.Table
 import javax.persistence.ManyToOne
 import javax.persistence.JoinColumn
+import lombok.Data;
 
 @Entity
+@Data
 @Table
 @org.springframework.data.relational.core.mapping.Table
 

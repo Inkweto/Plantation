@@ -13,8 +13,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 import org.springframework.data.repository.config.BootstrapMode
 
 @SpringBootApplication
-@EnableJpaRepositories("ninja.plantation.api.repository", bootstrapMode = BootstrapMode.DEFERRED)
-
 class ApiApplication {
 }
 

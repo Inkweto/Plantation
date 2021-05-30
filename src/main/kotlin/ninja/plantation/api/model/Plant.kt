@@ -9,8 +9,10 @@ import javax.persistence.Table
 import javax.persistence.ManyToOne
 import javax.persistence.OneToMany
 import javax.persistence.JoinColumn
+import lombok.Data;
 
 @Entity
+@Data
 @Table
 @org.springframework.data.relational.core.mapping.Table
 
@@ -36,5 +38,5 @@ public class Plant(
     var photo_path: String? = null,
 
     @OneToMany(mappedBy = "plant_id", cascade = arrayOf(CascadeType.ALL))
-    var notices: Set<Notice>?
+    var notices: List<Notice>? = null
 )
