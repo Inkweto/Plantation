@@ -27,7 +27,6 @@ class PlantServiceImpl: PlantService {
     override fun getPlantByName(name: String) =
             repository.findByName(name)
 
-
     override fun addPlant(plant: Plant): Plant {
         repository.save(plant)
         log.info("${plant.name},added!!!")
