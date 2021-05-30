@@ -8,5 +8,4 @@ import ninja.plantation.api.model.Notice
 
 @Repository
 interface NoticeRepository: CrudRepository<Notice, Long> {
-    //fun findByUserId(user_id: Long): MutableList<Notice>
 }

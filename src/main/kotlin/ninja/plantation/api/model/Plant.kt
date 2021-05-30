@@ -18,16 +18,12 @@ import lombok.Data;
 
 public class Plant(
     
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var plantId: Long? = null, 
+    @Column(name = "name")
+    var name: String = "",
 
     @ManyToOne 
     @JoinColumn(name="ownerId")
     val ownerId: User? = null,
-
-    @Column(name = "name")
-    var name: String = "",
 
     @Column(name = "heigth")
     var heigth: Long? = 0,
@@ -39,5 +35,9 @@ public class Plant(
     var photoPath: String? = null,
 
     @OneToMany(mappedBy = "plantId", cascade = arrayOf(CascadeType.ALL))
-    var notices: List<Notice>? = null
+    var notices: List<Notice>? = mutableListOf(),
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    var plantId: Long = 0
 )

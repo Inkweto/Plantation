@@ -22,23 +22,20 @@ import lombok.AllArgsConstructor
 
 public class User(
     
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, updatable = false)
-    var id: Long = 0, 
-
     @Column(name = "login", nullable = false, unique = true)
     var login: String = "",
 
     @Column(name = "passwordHash", nullable = false, unique = true)
     var password_hash: String = "", 
 
-
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false, updatable = false)
+    var id: Long = 0, 
 
     @OneToMany(mappedBy = "ownerId", cascade = arrayOf(CascadeType.ALL))
-    var plants: List<Plant>? = null,
+    var plants: List<Plant>? = mutableListOf()
     
     @OneToMany(mappedBy = "userId", cascade = arrayOf(CascadeType.ALL))
-    var notices: List<Notice>? = null
+    var notices: List<Notice>? = mutableListOf()
 )

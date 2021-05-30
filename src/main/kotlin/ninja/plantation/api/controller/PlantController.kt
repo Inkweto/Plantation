@@ -8,16 +8,23 @@ import org.springframework.web.bind.annotation.RestController
 
 import ninja.plantation.api.model.Plant
 import ninja.plantation.api.repository.PlantRepository
+import ninja.plantation.api.repository.UserRepository
 
 @RestController
 class PlantController {
 	
     @Autowired
     lateinit var repository: PlantRepository
+
+    @Autowired
+    lateinit var userRepo: UserRepository
        
-    @RequestMapping("/saveplants")
+    @RequestMapping("/savePlants")
     fun process(): String{
-        //repository.save(Plant(7, 1, "plant_test", 3))
+        
+        repository.save(Plant(name="Aloe"))
+        repository.save(Plant(name="Cactus"))
+        repository.save(Plant(name="Petunie"))
         return "Done"
     }
        
@@ -38,6 +45,11 @@ class PlantController {
         return repository.findById(id).orElse(null).toString()
     }
        
+    @RequestMapping("/FindPlantByOwnerId")
+    fun findByOwnerId(@RequestParam("owenrId") ownerId: Long): String{
+        return repository.findByOwnerId(ownerId).toString()
+    }
+
     @RequestMapping("/findPlantByName")
     fun fetchDataByName(@RequestParam("name") name: String): String{
         var result = ""
@@ -48,4 +60,6 @@ class PlantController {
            
         return result
     }
+
+    
 }

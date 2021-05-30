@@ -22,10 +22,6 @@ class NoticeServiceImpl: NoticeService {
              repository.findById(notice_id).orElse(null);
 
 
-    // override fun getNoticeByUserId(user_id: Long): List<Notice> {
-    //         return repository.findByUserId(user_id);
-    // }
-
     override fun addNotice(this_notice: Notice): Notice {
         repository.save(this_notice)
         log.info("${this_notice.name},added!!!")
