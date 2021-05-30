@@ -20,10 +20,11 @@ public class Plant(
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var plant_id: Long? = null, 
+    var plantId: Long? = null, 
 
     @ManyToOne 
-    val user_owner_id: User? = null,
+    @JoinColumn(name="ownerId")
+    val ownerId: User? = null,
 
     @Column(name = "name")
     var name: String = "",
@@ -34,9 +35,9 @@ public class Plant(
     @Column(name = "diameter")
     var diameter: Long? = 0,
 
-    @Column(name = "photo_path")
-    var photo_path: String? = null,
+    @Column(name = "photoPath")
+    var photoPath: String? = null,
 
-    @OneToMany(mappedBy = "plant_id", cascade = arrayOf(CascadeType.ALL))
+    @OneToMany(mappedBy = "plantId", cascade = arrayOf(CascadeType.ALL))
     var notices: List<Notice>? = null
 )

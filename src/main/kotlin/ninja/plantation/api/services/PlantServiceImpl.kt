@@ -21,8 +21,8 @@ class PlantServiceImpl: PlantService {
      override fun getPlantById(plant_id: Long) =
             repository.findById(plant_id).orElse(null);
 
-    // override fun getPlantByOwnerId(user_id: Long) =
-    //         repository.findByOwnerId(user_id) 
+    override fun getPlantByOwnerId(user_owner_id: Long) =
+            repository.findByOwnerId(user_owner_id) 
 
     override fun getPlantByName(name: String) =
             repository.findByName(name)

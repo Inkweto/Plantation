@@ -9,5 +9,5 @@ import ninja.plantation.api.model.Plant
 @Repository
 interface PlantRepository: CrudRepository<Plant, Long> {
     fun findByName(name: String): MutableList<Plant>
-   // fun findByOwnerId(owner_id: Long): MutableList<Plant>
+    fun findByOwnerId(user_owner_id: Long): List<Plant>
 }

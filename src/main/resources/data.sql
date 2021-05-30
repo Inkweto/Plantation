@@ -1,39 +1,39 @@
-CREATE TABLE IF NOT EXISTS `Users` (
+CREATE TABLE IF NOT EXISTS `users` (
   `id` INT(11) AUTO_INCREMENT,
   `login` VARCHAR(20) NOT NULL,
-  `password_hash` VARCHAR(20) NOT NULL,
+  `passwordHash` VARCHAR(20) NOT NULL,
   PRIMARY KEY (`id`)
 );
 
-CREATE TABLE IF NOT EXISTS`Plant` (
-  `plant_id` INT(11) AUTO_INCREMENT,
-  `user_owner_id` INT(11),
+CREATE TABLE IF NOT EXISTS `plant` (
+  `plantId` INT(11) AUTO_INCREMENT,
+  `ownerId` INT(11),
   `name` VARCHAR(20) NOT NULL,
   `heigth` INT(3),
   `diameter` INT(3),
-  `photo_path` VARCHAR(20),
-  PRIMARY KEY (`plant_id`),
-  FOREIGN KEY (`user_owner_id`)
+  `photoPath` VARCHAR(20),
+  PRIMARY KEY (`plantId`),
+  FOREIGN KEY (`ownerId`)
     REFERENCES `Users`(`id`)
 );
 
-CREATE TABLE IF NOT EXISTS `Notice` (
-  `notice_id` INT(11) AUTO_INCREMENT,
-  `user_id` INT(11),
-  `plant_id` INT(11),
-  `notice_text` TEXT,
-  PRIMARY KEY (`notice_id`),
-  FOREIGN KEY (`user_id`)
+CREATE TABLE IF NOT EXISTS `notice` (
+  `noticeId` INT(11) AUTO_INCREMENT,
+  `userId` INT(11),
+  `plantId` INT(11),
+  `noticeText` TEXT,
+  PRIMARY KEY (`noticeId`),
+  FOREIGN KEY (`userId`)
     REFERENCES `Users`(`id`),
-  FOREIGN KEY (`plant_id`)
-    REFERENCES `Plant`(`plant_id`),
+  FOREIGN KEY (`plantId`)
+    REFERENCES `Plant`(`plantId`),
 );
 
-CREATE TABLE IF NOT EXISTS `TemplatePlant` (
-  `template_plant_id` INT(11) AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `templatePlant` (
+  `templatePlantId` INT(11) AUTO_INCREMENT,
   `name` VARCHAR(20) NOT NULL,
   `height` INT(3),
   `diameter` INT(3),
-  `photo_path` VARCHAR(20),
-  PRIMARY KEY (`template_plant_id`)
+  `photoPath` VARCHAR(20),
+  PRIMARY KEY (`templatePlantId`)
 );

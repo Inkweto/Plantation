@@ -19,19 +19,21 @@ public class Notice(
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "notice_id", nullable = false, updatable = false)
-    var notice_id: Long = 0, 
-
-    @ManyToOne 
-    val user_id: User? = null,
+    @Column(name = "noticeId", nullable = false, updatable = false)
+    var noticeId: Long = 0, 
 
     @ManyToOne
-    val plant_id: Plant? = null,
+    @JoinColumn(name="userId")
+    val userId: User? = null,
+
+    @ManyToOne
+    @JoinColumn(name="plantId")
+    val plantId: Plant? = null,
 
     @Column(name = "name")
     var name: String = "",
 
-    @Column(name = "notice_text")
-    var notice_text: String? = null
+    @Column(name = "noticeText")
+    var noticeText: String? = null
 
 )

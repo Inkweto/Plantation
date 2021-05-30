@@ -17,7 +17,7 @@ public class PlantsTemplate(
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "template_plant_id", nullable = false, updatable = false)
+    @Column(name = "templatePlantId", nullable = false, updatable = false)
     var template_plant_id: Long? = null, 
 
     @Column(name = "name")
@@ -29,6 +29,6 @@ public class PlantsTemplate(
     @Column(name = "diameter")
     var diameter: String? = null,
 
-    @Column(name = "photo_path")
-    var photo_path: String? = null
+    @Column(name = "photoPath")
+    var photoPath: String? = null
 )

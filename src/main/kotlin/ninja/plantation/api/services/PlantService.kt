@@ -11,6 +11,6 @@ interface PlantService {
     fun getPlantById(plant_id: Long): Plant?
     fun getPlants(): MutableIterable<Plant>?
     fun getPlantByName(name: String): List<Plant>
-   // fun getPlantByOwnerId(user_id: Long): List<Plant>
+    fun getPlantByOwnerId(user_owner_id: Long): List<Plant>
     fun updatePlant(plant_id: Long, plant: Plant): Plant
 }

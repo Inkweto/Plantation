@@ -30,15 +30,15 @@ public class User(
     @Column(name = "login", nullable = false, unique = true)
     var login: String = "",
 
-    @Column(name = "password_hash", nullable = false, unique = true)
+    @Column(name = "passwordHash", nullable = false, unique = true)
     var password_hash: String = "", 
 
 
 
 
-    @OneToMany(mappedBy = "user_owner_id", cascade = arrayOf(CascadeType.ALL))
+    @OneToMany(mappedBy = "ownerId", cascade = arrayOf(CascadeType.ALL))
     var plants: List<Plant>? = null,
     
-    @OneToMany(mappedBy = "user_id", cascade = arrayOf(CascadeType.ALL))
+    @OneToMany(mappedBy = "userId", cascade = arrayOf(CascadeType.ALL))
     var notices: List<Notice>? = null
 )
