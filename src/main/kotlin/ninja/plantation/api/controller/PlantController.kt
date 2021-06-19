@@ -5,12 +5,17 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.RequestBody
 
 import ninja.plantation.api.model.Plant
 import ninja.plantation.api.repository.PlantRepository
 import ninja.plantation.api.repository.UserRepository
 
 @RestController
+@RequestMapping("/plants")
 class PlantController {
 	
     @Autowired
@@ -19,30 +24,20 @@ class PlantController {
     @Autowired
     lateinit var userRepo: UserRepository
        
-    @RequestMapping("/savePlants")
-    fun process(): String{
-        
-        repository.save(Plant(name="Aloe"))
-        repository.save(Plant(name="Cactus"))
-        repository.save(Plant(name="Petunie"))
-        return "Done"
+    @PostMapping("/")
+    fun process(@RequestBody newPlant : Plant): Plant{
+        return repository.save(newPlant)
     }
        
        
-    @RequestMapping("/FindAllPlants")
-    fun findAll(): String{
-        var result = ""
-		
-        for(cust in repository.findAll()){
-            result += cust.toString() + ""
-        }
-           
-        return result
+    @GetMapping("/")
+    fun findAll(): Iterable<Plant>{  
+        return repository.findAll()
     }
        
-    @RequestMapping("/FindPlantById")
-    fun findById(@RequestParam("id") id: Long): String{
-        return repository.findById(id).orElse(null).toString()
+    @GetMapping("/{id}")
+    fun findById(@PathVariable id: Long): Plant{
+        return repository.findById(id).orElse(null)
     }
        
     @RequestMapping("/FindPlantByOwnerId")
