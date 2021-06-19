@@ -34,8 +34,8 @@ public class User(
     var id: Long = 0, 
 
     @OneToMany(mappedBy = "ownerId", cascade = arrayOf(CascadeType.ALL))
-    var plants: List<Plant>? = mutableListOf()
+    var plants: List<Plant>? = mutableListOf(),
     
     @OneToMany(mappedBy = "userId", cascade = arrayOf(CascadeType.ALL))
-    var notices: List<Notice>? = mutableListOf()
+    var notices: List<Notice>? = mutableListOf(),
 )
