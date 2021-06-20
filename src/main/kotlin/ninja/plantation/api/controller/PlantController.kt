@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestBody
 
 import ninja.plantation.api.model.Plant
+import ninja.plantation.api.model.Notice
 import ninja.plantation.api.repository.PlantRepository
 import ninja.plantation.api.repository.UserRepository
 
@@ -24,13 +25,13 @@ class PlantController {
     @Autowired
     lateinit var userRepo: UserRepository
        
-    @PostMapping("/")
+    @PostMapping("")
     fun process(@RequestBody newPlant : Plant): Plant{
         return repository.save(newPlant)
     }
        
        
-    @GetMapping("/")
+    @GetMapping("")
     fun findAll(): Iterable<Plant>{  
         return repository.findAll()
     }
@@ -38,6 +39,11 @@ class PlantController {
     @GetMapping("/{id}")
     fun findById(@PathVariable id: Long): Plant{
         return repository.findById(id).orElse(null)
+    }
+
+    @GetMapping("/{id}/notices")
+    fun findByIdNotices(@PathVariable id: Long): List<Notice>{
+        return repository.findById(id).orElse(null).notices.orEmpty()
     }
        
     @RequestMapping("/FindPlantByOwnerId")

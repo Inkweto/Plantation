@@ -20,13 +20,13 @@ class PlantsTemplateController {
     @Autowired
     lateinit var repository: PlantsTemplateRepository
        
-    @PostMapping("/")
+    @PostMapping("")
     fun process(@RequestBody newPlantsTemplate : PlantsTemplate): PlantsTemplate{
         return repository.save(newPlantsTemplate)
     }
        
        
-    @GetMapping("/")
+    @GetMapping("")
     fun findAll(): Iterable<PlantsTemplate>{
         return repository.findAll()
     }

@@ -22,13 +22,13 @@ class NoticeController {
     @Autowired
     lateinit var repository: NoticeRepository
        
-    @PostMapping("/")
+    @PostMapping("")
     fun process(@RequestBody newNotice : Notice): String{
         return repository.save(newNotice).toString()
     }
        
        
-    @GetMapping("/")
+    @GetMapping("")
     fun findAll(): Iterable<Notice>{           
         return repository.findAll()
     }
