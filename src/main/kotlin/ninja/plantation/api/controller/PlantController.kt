@@ -45,11 +45,6 @@ class PlantController {
     fun findByIdNotices(@PathVariable id: Long): List<Notice>{
         return repository.findById(id).orElse(null).notices.orEmpty()
     }
-       
-    @RequestMapping("/FindPlantByOwnerId")
-    fun findByOwnerId(@RequestParam("owenrId") ownerId: Long): String{
-        return repository.findByOwnerId(ownerId).toString()
-    }
 
     @RequestMapping("/findPlantByName")
     fun fetchDataByName(@RequestParam("name") name: String): String{
