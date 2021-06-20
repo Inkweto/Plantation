@@ -1,5 +1,6 @@
 package ninja.plantation.api.model
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
@@ -35,6 +36,7 @@ public class Plant(
     var photoPath: String? = null,
 
     @OneToMany(mappedBy = "plantId", cascade = arrayOf(CascadeType.ALL))
+    @JsonIgnore
     var notices: List<Notice>? = mutableListOf(),
 
     @Id

@@ -1,5 +1,6 @@
 package ninja.plantation.api.model
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
@@ -26,6 +27,7 @@ public class User(
     var login: String = "",
 
     @Column(name = "passwordHash", nullable = false, unique = true)
+    @JsonIgnore
     var password_hash: String = "", 
 
     @Id
@@ -34,8 +36,10 @@ public class User(
     var id: Long = 0, 
 
     @OneToMany(mappedBy = "ownerId", cascade = arrayOf(CascadeType.ALL))
+    @JsonIgnore
     var plants: List<Plant>? = mutableListOf(),
     
     @OneToMany(mappedBy = "userId", cascade = arrayOf(CascadeType.ALL))
+    @JsonIgnore
     var notices: List<Notice>? = mutableListOf(),
 )

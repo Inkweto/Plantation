@@ -30,6 +30,9 @@ class ApiApplication {
 class KotlinSecurityConfiguration : WebSecurityConfigurerAdapter() {
 	override fun configure(http: HttpSecurity?) {
 		http {
+			csrf {
+				disable()
+			}
 			httpBasic {}
 			authorizeRequests {
 				authorize("/notices/**", hasAuthority("ROLE_LOGGED"))
