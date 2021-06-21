@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 @RestController
-@CrossOrigin(origins = ["http://localhost:8000"])
+@CrossOrigin(origins = ["http://localhost:8000", "http://localhost:10533"])
 @RequestMapping("/users")
 class UserController {
 

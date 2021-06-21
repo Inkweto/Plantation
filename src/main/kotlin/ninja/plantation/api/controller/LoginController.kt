@@ -28,10 +28,8 @@ import org.springframework.web.bind.annotation.CookieValue;
 
 @RestController
 @CrossOrigin(origins = ["http://localhost:8000"])
-@RequestMapping("/conn")
+@RequestMapping("/")
 class LoginController(private val userService: UserService) {
-
-    @Autowired lateinit var repository: UserRepository
 
     @PostMapping("/register")
     fun register(@RequestParam("login") login: String, @RequestParam("password") password: String): ResponseEntity<Any> {
@@ -72,7 +70,7 @@ class LoginController(private val userService: UserService) {
     fun user(@CookieValue("jwt") jwt: String?): ResponseEntity<Any> {
         try {
             if(jwt == null)
-            return ResponseEntity.status(401).body(MsgResponse("Unauthenticated user"));
+                return ResponseEntity.status(401).body(MsgResponse("Unauthenticated user"));
             
             val body = Jwts.parser().setSigningKey("secret").parseClaimsJws(jwt).body
             return ResponseEntity.ok(this.userService.getUserById(body.issuer.toLong()));

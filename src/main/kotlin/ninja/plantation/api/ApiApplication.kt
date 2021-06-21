@@ -37,28 +37,12 @@ class KotlinSecurityConfiguration : WebSecurityConfigurerAdapter() {
 				disable()
 			}
 			httpBasic {}
-			authorizeRequests {
-				authorize("/notices/**", hasAuthority("ROLE_LOGGED"))
-				authorize("/users/**", hasAuthority("ROLE_LOGGED"))
-				authorize("/plants/**", hasAuthority("ROLE_LOGGED"))
-				authorize("/plants-templates/**", hasAuthority("ROLE_LOGGED"))
-			}
 		}
 	}
 }
 
 fun main(args: Array<String>) {
     runApplication<ApiApplication>(*args) {
-        addInitializers(beans {
-			bean {
-				fun user(user: String, pw: String, vararg roles: String) =
-                    User.withDefaultPasswordEncoder().username(user).password(pw).roles(*roles).build()
-
-				InMemoryUserDetailsManager(user("user", "pw", "LOGGED"), 
-										   user("admin", "pw1", "USER", "ADMIN")
-										  )
-			}
-		})
     }
     //SpringApplication.run(ApiApplication::class.java, * args) 
 }
