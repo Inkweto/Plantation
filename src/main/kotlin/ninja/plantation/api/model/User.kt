@@ -28,7 +28,7 @@ public class User(
 
     @Column(name = "passwordHash", nullable = false, unique = true)
     @JsonIgnore
-    var password_hash: String = "", 
+    var password_hash: String = "",
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

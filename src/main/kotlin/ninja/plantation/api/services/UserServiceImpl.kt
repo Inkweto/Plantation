@@ -21,15 +21,12 @@ class UserServiceImpl: UserService {
      override fun getUserById(id: Long) =
              repository.findById(id).orElse(null);
 
-
     override fun getUserByLogin(login: String) =
             repository.findByLogin(login)
 
 
     override fun addUser(user: User): User {
-        repository.save(user)
-        log.info("${user.login},added!!!")
-        return user
+        return repository.save(user)
     }
 
     override fun deleteUser(id: Long) {

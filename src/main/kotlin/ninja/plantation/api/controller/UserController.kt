@@ -47,13 +47,7 @@ class UserController {
     }
 
     @RequestMapping("/findUserByLogin")
-    fun fetchDataBylogin(@RequestParam("login") login: String): String {
-        var result = ""
-
-        for (cust in repository.findByLogin(login)) {
-            result += cust.toString() + ""
-        }
-
-        return result
+    fun fetchDataBylogin(@RequestParam("login") login: String): User? {
+        return repository.findByLogin(login)
     }
 }
