@@ -58,13 +58,6 @@ fun main(args: Array<String>) {
 										   user("admin", "pw1", "USER", "ADMIN")
 										  )
 			}
-			bean {
-				router {
-					GET("/greetings") { request ->
-						request.principal().map { it.name }.map { ServerResponse.ok().body(mapOf("greeting" to "Hello, $it")) }.orElseGet { ServerResponse.badRequest().build() }
-					}
-				}
-			}
 		})
     }
     //SpringApplication.run(ApiApplication::class.java, * args) 
