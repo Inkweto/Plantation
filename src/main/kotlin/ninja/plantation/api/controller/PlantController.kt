@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestBody
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import ninja.plantation.api.model.Plant
 import ninja.plantation.api.model.Notice
@@ -16,6 +17,7 @@ import ninja.plantation.api.repository.PlantRepository
 import ninja.plantation.api.repository.UserRepository
 
 @RestController
+@CrossOrigin(origins = ["http://localhost:8000"])
 @RequestMapping("/plants")
 class PlantController {
 	

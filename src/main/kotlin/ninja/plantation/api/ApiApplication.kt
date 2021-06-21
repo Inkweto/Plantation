@@ -21,6 +21,9 @@ import org.springframework.security.core.userdetails.User
 import org.springframework.security.provisioning.InMemoryUserDetailsManager
 import org.springframework.web.servlet.function.ServerResponse
 import org.springframework.web.servlet.function.router
+import org.hibernate.validator.internal.metadata.raw.ConfigurationSource
+import org.springframework.web.cors.reactive.CorsWebFilter
+import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource
 
 @SpringBootApplication
 class ApiApplication {
