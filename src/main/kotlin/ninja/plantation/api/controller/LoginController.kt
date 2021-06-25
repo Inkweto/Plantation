@@ -27,7 +27,8 @@ import javax.servlet.http.Cookie
 import org.springframework.web.bind.annotation.CookieValue;
 
 @RestController
-@CrossOrigin(origins = ["http://localhost:8000"])
+@CrossOrigin(origins = ["http://localhost:8000"],
+            allowCredentials = "true")
 @RequestMapping("/")
 class LoginController(private val userService: UserService) {
 
@@ -84,7 +85,7 @@ class LoginController(private val userService: UserService) {
         var cookie = Cookie("jwt", "");
         cookie.maxAge = 0;
         response.addCookie(cookie);
-        return ResponseEntity.ok(MsgResponse("Logged out"));
+        return ResponseEntity.ok(MsgResponse("Logged oooout"));
     }
 
     data class MsgResponse(val msg: String?)

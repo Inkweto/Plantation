@@ -13,15 +13,18 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.http.ResponseEntity
 import io.jsonwebtoken.Jwts
+import org.springframework.http.HttpHeaders;
 
 import ninja.plantation.api.model.Plant
+import ninja.plantation.api.model.User
 import ninja.plantation.api.model.Notice
 import ninja.plantation.api.repository.PlantRepository
 import ninja.plantation.api.repository.UserRepository
 import ninja.plantation.api.services.PlantService
 
 @RestController
-@CrossOrigin(origins = ["http://localhost:8000"])
+@CrossOrigin(origins = ["http://localhost:8000"],
+                allowCredentials = "true")
 @RequestMapping("/plants")
 class PlantController(private val plantService: PlantService) {
 	
@@ -37,22 +40,22 @@ class PlantController(private val plantService: PlantService) {
             if(jwt == null)
                 return ResponseEntity.status(401).body(MsgResponse("Unauthenticated user"));
 
+
             //val body = Jwts.parser().setSigningKey("secret").parseClaimsJws(jwt).body;
             //newPlant.ownerId = body.issuer.toLong();
-            return ResponseEntity.ok(plantService.addPlant(newPlant));
+        return ResponseEntity.ok(plantService.addPlant(newPlant));
         } catch (e: Exception) {
             return ResponseEntity.status(401).body(MsgResponse("Unauthenticated user"));
         }
     }
        
-    @GetMapping("")
-    fun findAllWhichBelongsToUserWithId(@CookieValue("jwt") jwt: String?): ResponseEntity<Any> {
+    @GetMapping("/")
+    fun findAllWhichBelongsToUserWithId(@CookieValue("jwt") jwt: String?, @RequestBody userId: User): ResponseEntity<Any> {
         try {
             if(jwt == null)
                 return ResponseEntity.status(401).body(MsgResponse("Unauthenticated user"));
 
-            val body = Jwts.parser().setSigningKey("secret").parseClaimsJws(jwt).body;
-            return ResponseEntity.ok(this.plantService.getPlantByOwnerId(body.issuer.toLong()));
+            return ResponseEntity.ok(this.plantService.getPlantByOwnerId(userId));
         } catch (e: Exception) {
             return ResponseEntity.status(401).body(MsgResponse("Unauthenticated user"));
         }
