@@ -1,6 +1,7 @@
 package ninja.plantation.api.services
 
 import ninja.plantation.api.model.Plant
+import ninja.plantation.api.model.User
 import ninja.plantation.api.repository.PlantRepository
 import mu.KotlinLogging
 import org.springframework.beans.factory.annotation.Autowired
@@ -21,7 +22,7 @@ class PlantServiceImpl: PlantService {
      override fun getPlantById(plant_id: Long) =
             repository.findById(plant_id).orElse(null);
 
-    override fun getPlantByOwnerId(user_owner_id: Long) =
+    override fun getPlantByOwnerId(user_owner_id: User?) =
             repository.findByOwnerId(user_owner_id) 
 
     override fun getPlantByName(name: String) =

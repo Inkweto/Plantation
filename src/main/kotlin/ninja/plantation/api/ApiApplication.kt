@@ -21,6 +21,9 @@ import org.springframework.security.core.userdetails.User
 import org.springframework.security.provisioning.InMemoryUserDetailsManager
 import org.springframework.web.servlet.function.ServerResponse
 import org.springframework.web.servlet.function.router
+import org.hibernate.validator.internal.metadata.raw.ConfigurationSource
+import org.springframework.web.cors.reactive.CorsWebFilter
+import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource
 
 @SpringBootApplication
 class ApiApplication {
@@ -34,35 +37,12 @@ class KotlinSecurityConfiguration : WebSecurityConfigurerAdapter() {
 				disable()
 			}
 			httpBasic {}
-			authorizeRequests {
-				authorize("/notices/**", hasAuthority("ROLE_LOGGED"))
-				authorize("/users/**", hasAuthority("ROLE_LOGGED"))
-				authorize("/plants/**", hasAuthority("ROLE_LOGGED"))
-				authorize("/plants-templates/**", hasAuthority("ROLE_LOGGED"))
-			}
 		}
 	}
 }
 
 fun main(args: Array<String>) {
     runApplication<ApiApplication>(*args) {
-        addInitializers(beans {
-			bean {
-				fun user(user: String, pw: String, vararg roles: String) =
-                    User.withDefaultPasswordEncoder().username(user).password(pw).roles(*roles).build()
-
-				InMemoryUserDetailsManager(user("user", "pw", "LOGGED"), 
-										   user("admin", "pw1", "USER", "ADMIN")
-										  )
-			}
-			bean {
-				router {
-					GET("/greetings") { request ->
-						request.principal().map { it.name }.map { ServerResponse.ok().body(mapOf("greeting" to "Hello, $it")) }.orElseGet { ServerResponse.badRequest().build() }
-					}
-				}
-			}
-		})
     }
     //SpringApplication.run(ApiApplication::class.java, * args) 
 }

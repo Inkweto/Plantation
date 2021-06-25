@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository
 // CRUD functions for class User
 @Repository
 interface UserRepository: CrudRepository<User, Long> {
-    fun findByLogin(login: String): MutableList<User>
+    fun findByLogin(login: String): User?
 }

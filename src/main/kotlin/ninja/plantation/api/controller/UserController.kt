@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 @RestController
+@CrossOrigin(origins = ["http://localhost:8000", "http://localhost:10533"])
 @RequestMapping("/users")
 class UserController {
 
@@ -45,13 +47,7 @@ class UserController {
     }
 
     @RequestMapping("/findUserByLogin")
-    fun fetchDataBylogin(@RequestParam("login") login: String): String {
-        var result = ""
-
-        for (cust in repository.findByLogin(login)) {
-            result += cust.toString() + ""
-        }
-
-        return result
+    fun fetchDataBylogin(@RequestParam("login") login: String): User? {
+        return repository.findByLogin(login)
     }
 }
